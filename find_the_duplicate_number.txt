@@ -1,0 +1,21 @@
+int findDuplicate(int* nums, int numsSize)
+{
+
+    int a[numsSize],r;
+    
+    for(int i=0;i<numsSize;i++)
+            a[i]=0;
+    
+    for(int j=0;j<numsSize;j++)
+    {
+            if(a[nums[j]]>=1)
+            {
+                r=nums[j];
+                 break;
+            }
+                
+            else
+                a[nums[j]]++;
+    }
+    return r;
+}
