@@ -1,0 +1,41 @@
+void setZeroes(int** matrix, int matrixSize, int* matrixColSize)
+{
+//taking first row and first column as indicator/flag
+    int r=matrixSize,c=*matrixColSize,row=1,col=1;
+    
+    for(int j=0;j<c;j++)
+       if(matrix[0][j]==0)
+       {
+            row=0;//if 1st row has a zero
+            break;
+       }
+    
+    for(int i=0;i<r;i++)
+        if(matrix[i][0]==0)
+        {
+             col=0;//if 1st col has a zero
+             break;
+        }
+    
+    for(int i=0;i<r;i++)
+        for(int j=0;j<c;j++)
+             if(matrix[i][j]==0)
+                 matrix[0][j]=matrix[i][0]=0;//if there is a zero other than in 1st row and 1st column update it in first row and 1st column
+  
+    for(int j=1;j<c;j++)
+         if(matrix[0][j]==0)//if 0th row jth(other than 0st col)has zero make all row jth col value as zero 
+             for(int i=1;i<r;i++)
+                matrix[i][j]=0;
+             
+     for(int i=1;i<r;i++) 
+         if(matrix[i][0]==0)//if 0th col ith(other than 0st row)has zero make all col ith row value as zero 
+             for(int j=1;j<c;j++)
+                matrix[i][j]=0;
+    
+    if(row==0)//if originally there was existing a zero in row 0th
+        for(int j=0;j<c;j++)
+            matrix[0][j]=0;//make all values of 0th row as zero
+    if(col==0)//if originally there was existing a zero in col 0th
+        for(int i=0;i<r;i++)
+            matrix[i][0]=0;//make all values of 0th col as zero
+}
