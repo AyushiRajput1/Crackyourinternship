@@ -1,0 +1,47 @@
+class Solution {
+//O(n^2)
+public:
+    vector<int> twoSum(vector<int>& nums, int target) 
+    {
+        vector<int> sum;
+        int s;
+        
+        for(int i=0;i<nums.size();i++)
+        {
+            for(int j=i+1;j<nums.size();j++)
+                if(nums[i]+nums[j]==target)
+                {
+                     sum.push_back(i);
+                    sum.push_back(j);
+                 }     
+            else
+                continue;
+        }
+        
+        return sum;
+    }
+};
+
+
+//O(n)
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) 
+    {
+        vector<int> sum;
+        map<int,int> m;
+        
+        for(int i=0;i<nums.size();i++)
+        {
+            if(m.find(target-nums[i])!=m.end())
+            {
+                sum.push_back(i);
+                sum.push_back(m[target-nums[i]]);
+                break;
+            }
+            m.insert(pair<int,int>(nums[i],i));
+        }
+        
+        return sum;
+    }
+};
