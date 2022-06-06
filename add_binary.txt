@@ -1,4 +1,5 @@
 class Solution {
+//greater time complexity
 public:
     string addBinary(string a, string b) 
     {
@@ -92,6 +93,33 @@ public:
         if(cn==1)
             s.push_back('1'); 
         
+        reverse(s.begin(),s.end());
+    return s;
+    }
+};
+
+---less time complexity-----
+class Solution 
+{
+public:
+    string addBinary(string a, string b) 
+    {
+        string s="";
+        int i=a.size()-1, j=b.size()-1,c=0,sum;
+        
+       while((i>=0)||(j>=0))
+       {
+           sum=c;
+           if(i>=0)
+               sum+=a[i--]-'0';//char values work on ASCII values 
+           if(j>=0)
+                sum+=b[j--]-'0';
+           c=sum>1?1:0;
+           s+=to_string(sum%2);
+       }
+        
+        if(c==1)
+            s+=to_string(c);
         reverse(s.begin(),s.end());
     return s;
     }
