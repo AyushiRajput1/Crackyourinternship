@@ -1,0 +1,20 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+pair<int, int> closestSum(vector<int> arr, int x)
+{
+    int a,b,m=INT_MAX;
+   for(int i=0;i < arr.size();i++)
+        {
+            for(int j=i+1;j < arr.size();j++)
+            {
+                if(((x-(arr[i]+arr[j]))<m)&&((x-(arr[i]+arr[j]))>0))
+                {
+                    m=x-(arr[i]+arr[j]);
+                    a=arr[i];
+                    b=arr[j];
+                }
+            }
+        }
+    return make_pair(a,b);
+}
