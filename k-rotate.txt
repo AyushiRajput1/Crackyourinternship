@@ -1,0 +1,16 @@
+#include<bits/stdc++.h>
+using namespace std;
+//time complexity=O(N^2)
+vector<int> kRotate(vector<int> a, int k)
+{
+    int n=a.size(),i=0;
+    while(i<k)
+    {
+        swap(a[0],a[n-1]);
+        for(int j=(n-1);j>=2;j--)
+            swap(a[j],a[j-1]);
+        i++;
+        
+    }
+    return a;
+}
