@@ -1,0 +1,95 @@
+class Solution {
+public:
+    vector<bool> kidsWithCandies(vector<int>& candies, int extraCandies) 
+    {
+        int n=candies.size(),y=0,x;
+        vector<bool> ans;
+        for(int i=0;i<n;i++)
+        {
+            x=candies[i]+extraCandies;
+            for(int j=0;j<n;j++)
+            {
+                if(x<candies[j])
+                    {  
+                        y=1;
+                        break;
+                     }
+                    else
+                        y=0;
+                
+            }
+            if(y==1)
+                ans.push_back(false);
+            else
+                ans.push_back(true); 
+        }
+        return ans;
+    }
+};
+
+--------------optimised solution-------------------
+O(N) 
+class Solution {
+public:
+    vector<bool> kidsWithCandies(vector<int>& candies, int extraCandies) 
+    {
+        int n=candies.size(),x;
+        vector<bool> ans;
+      for(int i=0;i<n;i++)
+        {
+            vector<int> c=candies;
+            c[i]+=extraCandies;
+            x=c[i];
+            sort(c.begin(),c.end());
+            if(c[n-1]==x)
+                ans.push_back(true);
+            else
+                ans.push_back(false);
+        }
+      
+        return ans;
+    }
+};
+
+class Solution {
+public:
+    vector<bool> kidsWithCandies(vector<int>& candies, int extraCandies) 
+    {
+        int n=candies.size(),m;
+        vector<bool> ans;
+        vector<int> c=candies;
+        
+        sort(c.begin(),c.end());
+        m=c[n-1];
+            
+      for(int i=0;i<n;i++)
+      {
+            if((candies[i]+extraCandies) < m)
+                ans.push_back(false);
+            else
+                ans.push_back(true);       
+      }
+      
+        return ans;
+    }
+};
+
+class Solution {
+public:
+    vector<bool> kidsWithCandies(vector<int>& candies, int extraCandies) 
+    {
+        int n=candies.size(),m;
+        vector<bool> ans;
+        vector<int> c=candies;
+        m=*max_element(candies.begin(),candies.end());
+      for(int i=0;i<n;i++)
+      {
+            if((candies[i]+extraCandies) < m)
+                ans.push_back(false);
+            else
+                ans.push_back(true);       
+      }
+      
+        return ans;
+    }
+};
