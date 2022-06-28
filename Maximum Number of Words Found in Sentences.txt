@@ -1,0 +1,18 @@
+class Solution {
+public:
+    int mostWordsFound(vector<string>& sentences) 
+    {
+        int cn=1,m=INT_MIN; //cn=1 becoz (no. of words in sentence=spaces+1)
+        for(int i=0;i<sentences.size();i++)
+        {
+            for(int j=0;j<sentences[i].size();j++)
+            {
+                if(sentences[i][j]==' ') //sentences[0] is the 0th sentence, sentences[0][0] is the 0th charater of 0th sentence
+                    cn++;
+            }
+            m=max(m,cn);
+            cn=1;
+        }
+        return m;
+    }
+};
