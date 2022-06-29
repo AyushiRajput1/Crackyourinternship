@@ -16,3 +16,19 @@ public:
         return m;
     }
 };
+
+---------optimal--------------
+class Solution {
+public:
+    int mostWordsFound(vector<string>& sentences) 
+    {
+        int cn,m=INT_MIN;
+        for(int i=0;i<sentences.size();i++)
+        {
+            cn=count(sentences[i].begin(),sentences[i].end(),' ')+1;/// Returns count of occurrences of value in range [begin, end],count(Iterator first, Iterator last,value)
+            m=max(m,cn);
+            cn=0;
+        }
+        return m;
+    }
+};
